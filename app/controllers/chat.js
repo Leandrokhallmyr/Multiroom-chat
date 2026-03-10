@@ -14,7 +14,10 @@ module.exports.iniciaChat = function(application, req, res){
 		return;
 	}
 
-	// console.log(dadosForm);
+	application.get('io').emit(
+		'msgParaCliente', {apelido : dadosForm.apelido, mensagem : 'acabou de entrar no chat'}
+		);
 
-	res.render('chat');
+
+	res.render('chat', {dadosForm : dadosForm });
 }
